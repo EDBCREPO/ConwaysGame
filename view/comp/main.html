@@ -1,0 +1,31 @@
+<main class="uk-flex uk-flex-wrap uk-flex-center">
+
+    /°
+    (()=>{
+
+        const result = new Array( 109 * 48 ); 
+              result.fill(0);
+        return result.map((x,i)=>`
+            <a class="uk-text-light" 
+               onclick="window.active(this)"
+               style="width:10px; height:10px;
+                      border: 1px solid #eee"
+               active="false" ></a>
+        `).join('');
+
+    })()
+    °/
+
+</main>
+
+<script>
+(function(){
+
+    window.active = function( element ){
+        const bool = element.getAttribute('active')=='true';
+        const attr = bool ? false : true;
+        element.setAttribute('active',attr);
+    }
+
+})();
+</script>

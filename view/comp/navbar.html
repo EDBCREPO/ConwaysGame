@@ -1,0 +1,23 @@
+<nav class="uk-navbar-container uk-transparent uk-padding-large uk-padding-remove-vertical" uk-navbar>
+    <div class="uk-navbar-center">
+        <h1 class="uk-navbar-item uk-logo"> /°process.page.name°/ </h1>        
+    </div>
+    <div class="uk-navbar-right">
+        <a class="uk-navbar-item uk-button" uk-icon="icon:refresh" onclick="window.resetGame()"></a>
+        <a class="uk-navbar-item uk-button" uk-icon="icon:play" onclick="window.playGame()"></a>
+    </div>
+</nav>
+
+<script>
+(function(){
+
+    window.resetGame = function(){
+        window.state.set({ state: 'reset' });
+    }
+
+    window.playGame = function(){
+        window.state.set(state=>({ state: state.state == 'play' ? 'stop' : 'play' }));
+    }
+
+})()
+</script>
