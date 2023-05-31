@@ -1,22 +1,4 @@
-<main class="uk-flex uk-flex-wrap uk-flex-center">
-
-    /°
-    (()=>{
-
-        const result = new Array( 109 * 48 ); 
-              result.fill(0);
-        return result.map((x,i)=>`
-            <a class="uk-text-light" 
-               onclick="window.active(this)"
-               style="width:10px; height:10px;
-                      border: 1px solid #eee"
-               active="false" ></a>
-        `).join('');
-
-    })()
-    °/
-
-</main>
+<main class="uk-flex uk-flex-wrap uk-flex-center" screen></main>
 
 <script>
 (function(){
@@ -26,6 +8,23 @@
         const attr = bool ? false : true;
         element.setAttribute('active',attr);
     }
+
+    function main(){ window.state.set({ state: 'stop' });
+        const h = Math.floor(window.innerHeight / 12);
+        const w = Math.floor(window.innerWidth / 12);
+        res = new Array(); for( let i=w*h; i--; )
+        res.push(`
+            <a class="uk-text-light" 
+                onclick="window.active(this)"
+                style="width:10px; height:10px;
+                        border: 1px solid #eee"
+                active="false" ></a>
+        `);
+        $("[screen]").innerHTML = res.join('');        
+    }
+
+    device.info.observeField("width",main);
+    main();
 
 })();
 </script>

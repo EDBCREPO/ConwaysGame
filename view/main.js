@@ -9,8 +9,10 @@ window.state = new device.state({
 
 function game(){
 
-    const h=48, w=109; const el = _$('[active]');
+    const h = Math.floor(window.innerHeight / 12);
+    const w = Math.floor(window.innerWidth / 12);
     const arr = new Array(h*w); arr.fill(0);
+    const el = _$('[active]');
 
     for( let y=0; y<h; y++ ){ for( let x=0; x<w; x++ ){
          let actived = 0, pos = x + y * w;

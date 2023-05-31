@@ -4,7 +4,7 @@
     </div>
     <div class="uk-navbar-right">
         <a class="uk-navbar-item uk-button" uk-icon="icon:refresh" onclick="window.resetGame()"></a>
-        <a class="uk-navbar-item uk-button" uk-icon="icon:play" onclick="window.playGame()"></a>
+        <a class="uk-navbar-item uk-button" uk-icon="icon:pause" onclick="window.playGame()" b></a>
     </div>
 </nav>
 
@@ -18,6 +18,15 @@
     window.playGame = function(){
         window.state.set(state=>({ state: state.state == 'play' ? 'stop' : 'play' }));
     }
+
+    function main(){
+        window.state.observeField("state",( prev, act )=>{
+            switch( act ){
+                case 'play': $('[b]').setAttribute("uk-icon","icon:play"); break;
+                case 'stop': $('[b]').setAttribute("uk-icon","icon:pause"); break;
+            }
+        });
+    }   main();
 
 })()
 </script>
